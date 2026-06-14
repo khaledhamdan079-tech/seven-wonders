@@ -2,6 +2,7 @@ const http = require("http");
 const crypto = require("crypto");
 
 const port = Number(process.env.PORT || 3000);
+const host = process.env.HOST || "0.0.0.0";
 const rooms = new Map();
 let waitingRoomId = null;
 
@@ -249,6 +250,6 @@ async function handle(request, response) {
   }
 }
 
-http.createServer(handle).listen(port, () => {
-  console.log(`Duel match server listening on ${port}`);
+http.createServer(handle).listen(port, host, () => {
+  console.log(`Duel match server listening on ${host}:${port}`);
 });
