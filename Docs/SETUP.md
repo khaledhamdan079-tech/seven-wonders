@@ -37,15 +37,15 @@ The project does not include copied publisher artwork. Add any private assets yo
 
 ## Deploy To Railway
 
-1. Create a Railway service from the `Server` folder.
+1. Create a Railway service from this GitHub repo.
 
-2. Railway should detect the Node app and run:
+2. Railway can deploy from the repo root. The root `package.json` and `railway.json` start the match server with:
 
    ```bash
    npm start
    ```
 
-3. Copy the Railway public URL.
+3. Generate or copy the Railway public URL.
 
 4. In the Unity lobby, paste the Railway URL into `Server URL`.
 

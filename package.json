@@ -1,0 +1,12 @@
+{
+  "name": "seven-wonders-duel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Unity client plus Railway matchmaking server for the duel game.",
+  "scripts": {
+    "start": "node Server/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
