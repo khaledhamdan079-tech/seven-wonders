@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Linq;
 using NUnit.Framework;
 using SevenWondersDuel.Core;
@@ -77,3 +78,4 @@ public class DuelReducerTests
         return state;
     }
 }
+#endif

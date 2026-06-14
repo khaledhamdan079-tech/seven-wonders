@@ -7,6 +7,7 @@
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/
+.utmp/
 
 # Unity generated solution/project files
 *.csproj
