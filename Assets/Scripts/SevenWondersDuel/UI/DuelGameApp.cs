@@ -43,7 +43,7 @@ namespace SevenWondersDuel.UI
         private bool onlineMode;
         private int localPlayerIndex = -1;
         private string playerName = "Player";
-        private string serverUrl = "http://localhost:3000";
+        private string serverUrl = DuelOnlineClient.DefaultBaseUrl;
         private string joinCode = "";
         private string statusMessage = "";
         private float pollCountdown;
@@ -227,7 +227,7 @@ namespace SevenWondersDuel.UI
             Text(controls, string.IsNullOrEmpty(statusMessage) ? "Ready" : statusMessage, 18, TextAnchor.MiddleRight, Gold, Anchor(0.52f, 0.875f, 0.93f, 0.955f));
 
             AddInput(controls, "Player name", playerName, value => playerName = string.IsNullOrWhiteSpace(value) ? "Player" : value, Anchor(0.07f, 0.735f, 0.93f, 0.845f));
-            AddInput(controls, "Server URL", serverUrl, value => serverUrl = string.IsNullOrWhiteSpace(value) ? "http://localhost:3000" : value, Anchor(0.07f, 0.595f, 0.93f, 0.705f));
+            AddInput(controls, "Server URL", serverUrl, value => serverUrl = string.IsNullOrWhiteSpace(value) ? DuelOnlineClient.DefaultBaseUrl : value.Trim(), Anchor(0.07f, 0.595f, 0.93f, 0.705f));
 
             StyledButton(controls, "LOCAL HOTSEAT", StartLocalGame, Good, Anchor(0.07f, 0.47f, 0.48f, 0.555f));
             StyledButton(controls, "FIND MATCH", FindOnlineMatch, new Color(0.24f, 0.36f, 0.6f), Anchor(0.52f, 0.47f, 0.93f, 0.555f));
@@ -269,6 +269,7 @@ namespace SevenWondersDuel.UI
         {
             onlineMode = true;
             selectedSlotId = -1;
+            serverUrl = DuelOnlineClient.NormalizeBaseUrl(serverUrl);
             online.BaseUrl = serverUrl;
             statusMessage = "Searching for another player";
             RenderWaiting();
@@ -279,6 +280,7 @@ namespace SevenWondersDuel.UI
         {
             onlineMode = true;
             selectedSlotId = -1;
+            serverUrl = DuelOnlineClient.NormalizeBaseUrl(serverUrl);
             online.BaseUrl = serverUrl;
             statusMessage = "Creating private room";
             RenderWaiting();
@@ -289,6 +291,7 @@ namespace SevenWondersDuel.UI
         {
             onlineMode = true;
             selectedSlotId = -1;
+            serverUrl = DuelOnlineClient.NormalizeBaseUrl(serverUrl);
             online.BaseUrl = serverUrl;
             statusMessage = "Joining room";
             RenderWaiting();

@@ -27,13 +27,15 @@ The project does not include copied publisher artwork. Add any private assets yo
 
 3. For local testing, choose `Local Hotseat`.
 
-4. For online testing, keep the lobby server URL as:
+4. For online testing against the deployed Railway server, keep the lobby server URL as:
 
    ```text
-   http://localhost:3000
+   https://seven-wonders-production.up.railway.app
    ```
 
-5. Open a second Unity player/editor instance and use `Find Match`, or create a private room and join with the displayed code.
+5. For local server testing instead, change the lobby server URL to `http://localhost:3000`.
+
+6. Open a second Unity player/editor instance and use `Find Match`, or create a private room and join with the displayed code.
 
 ## Deploy To Railway
 
@@ -47,7 +49,13 @@ The project does not include copied publisher artwork. Add any private assets yo
 
 3. Generate or copy the Railway public URL.
 
-4. In the Unity lobby, paste the Railway URL into `Server URL`.
+4. In the Unity lobby, the default `Server URL` is:
+
+   ```text
+   https://seven-wonders-production.up.railway.app
+   ```
+
+   Replace it only if you deploy the server to a different Railway domain.
 
 The server is in-memory. Restarting the Railway service clears active rooms, which is fine for private prototype play. For a public release you would add persistence, reconnect tokens, server-side rule validation, and moderation tools.
 

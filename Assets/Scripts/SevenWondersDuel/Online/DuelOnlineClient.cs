@@ -51,7 +51,9 @@ namespace SevenWondersDuel.Online
 
     public class DuelOnlineClient : MonoBehaviour
     {
-        public string BaseUrl = "http://localhost:3000";
+        public const string DefaultBaseUrl = "https://seven-wonders-production.up.railway.app";
+
+        public string BaseUrl = DefaultBaseUrl;
         public RoomSnapshotDto Snapshot { get; private set; }
         public string LastError { get; private set; }
 
@@ -184,8 +186,20 @@ namespace SevenWondersDuel.Online
 
         private static string Combine(string baseUrl, string path)
         {
-            var root = string.IsNullOrWhiteSpace(baseUrl) ? "http://localhost:3000" : baseUrl.TrimEnd('/');
+            var root = NormalizeBaseUrl(baseUrl);
             return root + path;
+        }
+
+        public static string NormalizeBaseUrl(string baseUrl)
+        {
+            var root = string.IsNullOrWhiteSpace(baseUrl) ? DefaultBaseUrl : baseUrl.Trim();
+            if (!root.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                !root.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                root = "https://" + root;
+            }
+
+            return root.TrimEnd('/');
         }
     }
 }
